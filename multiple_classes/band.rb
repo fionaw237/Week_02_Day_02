@@ -15,4 +15,17 @@ class Band
     return performance
   end
 
+  def members()
+    copy = []
+    return copy.replace(@members)
+  end
+
+  def member_count()
+    return @members.count()
+  end
+
+  def add_member(new_member)
+    @members << new_member
+  end
+
 end

@@ -25,4 +25,21 @@ class BandTest < MiniTest::Test
     assert_equal(expected, @beatles.perform("Hey Jude"))
   end
 
+  def test_can_get_members()
+    assert_equal(2, @beatles.members().count())
+  end
+
+  def test_can_manipulate_original_array()
+    members = @beatles.members()
+    members.push("A nasty piece of code")
+    assert_equal(2, @beatles.members().count())
+  end
+
+  def test_add_member()
+
+    guitar = Instrument.new("Guitar")
+    paul = Musician.new("Paul McCartney", guitar)
+    @beatles.add_member(paul)
+    assert_equal(3, @beatles.member_count)
+  end
 end
