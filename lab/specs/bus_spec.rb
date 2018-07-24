@@ -11,9 +11,10 @@ class BusTest < MiniTest::Test
     @passenger2 = Person.new("Fiona", 32)
 
     @busstop = BusStop.new("bus stop")
-    @busstop.add_passenger(@passenger1)
-    @busstop.add_passenger(@passenger2)
+
   end
+
+  #can call @bus.class to check bus object has been created
 
   def test_drive()
     assert_equal("Brum Brum", @bus.drive("Brum Brum"))
@@ -25,25 +26,29 @@ class BusTest < MiniTest::Test
 
   def test_pick_up()
     @bus.pick_up(@passenger1)
-    assert_equal(1, @bus.passenger_count)
+    assert_equal(1, @bus.passenger_count())
   end
 
   def test_drop_off()
     @bus.pick_up(@passenger1)
     @bus.pick_up(@passenger2)
     @bus.drop_off(@passenger2)
-    assert_equal(1, @bus.passenger_count)
+    assert_equal(1, @bus.passenger_count())
   end
 
   def test_empty()
     @bus.pick_up(@passenger1)
     @bus.pick_up(@passenger2)
     @bus.empty()
-    assert_equal(0, @bus.passenger_count)
+    assert_equal(0, @bus.passenger_count())
   end
 
-  def test_pick_up_from_stop()
-    @bus.pick_up_from_stop
-  end
+   def test_pick_up_from_stop()
+     @busstop.add_to_queue(@passenger1)
+     @busstop.add_to_queue(@passenger2)
+     @bus.pick_up_from_stop(@busstop)
+     assert_equal(1, @bus.passenger_count())
+     assert_equal(0, @busstop.queue_count)
+   end
 
 end

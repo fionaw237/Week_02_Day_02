@@ -13,7 +13,7 @@ class BusStopTest < MiniTest::Test
   end
 
   def test_add_person_to_queue()
-    @busstop.add_passenger(@passenger1)
+    @busstop.add_to_queue(@passenger1)
     assert_equal(1, @busstop.queue_count)
   end
 

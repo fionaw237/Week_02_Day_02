@@ -9,13 +9,21 @@ class BusStop
     return @queue.count()
   end
 
-  def add_passenger(passenger)
-    @queue << passenger
+  def add_to_queue(person)
+    @queue << person
   end
 
-  def get_in_bus
-    @queue.empty()
+  def get_passenger()
+    return @queue.unshift()
   end
 
+  def queue()
+    copy = []
+    copy.replace(@queue)
+  end
+
+  def clear_queue()
+    @queue.clear()
+  end
 
 end
