@@ -2,7 +2,6 @@ require("minitest/autorun")
 require("minitest/rg")
 require_relative("../river")
 require_relative("../fish")
-require_relative("../bear")
 
 class RiverTest < MiniTest::Test
 
@@ -17,8 +16,10 @@ class RiverTest < MiniTest::Test
 
     @fish = [@fish1, @fish2, @fish3, @fish4]
 
-    @bear = Bear.new("Sparky", "brown bear")
+  end
 
+  def test_can_create_river()
+    assert_equal(River, @river.class())
   end
 
   def test_has_name()
@@ -26,7 +27,7 @@ class RiverTest < MiniTest::Test
   end
 
   def test_fish_count()
-    assert_equal(0, @river.fish_count)
+    assert_equal(0, @river.fish_count())
   end
 
   def test_add_fish_to_river()
@@ -37,15 +38,7 @@ class RiverTest < MiniTest::Test
   def test_remove_a_fish()
     @river.add_fish_to_river(@fish)
     @river.remove_a_fish()
-    assert_equal(3, @river.fish_count)
-  end
-
-  def test_river_loses_fish_when_bear_takes_fish()
-    @river.add_fish_to_river(@fish)
-    @bear.take_fish_from_river(@river)
     assert_equal(3, @river.fish_count())
   end
-
-
 
 end
