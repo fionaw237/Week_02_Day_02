@@ -1,12 +1,25 @@
 require("minitest/autorun")
 require("minitest/rg")
 require_relative("../bear")
+require_relative("../river")
+require_relative("../fish")
 
 class BearTest < MiniTest::Test
 
   def setup()
 
     @bear = Bear.new("Sparky", "brown bear")
+
+    @river = River.new("Tay")
+
+    @fish1 = Fish.new("fish1")
+    @fish2 = Fish.new("fish2")
+    @fish3 = Fish.new("fish3")
+    @fish4 = Fish.new("fish4")
+
+    @fish = [@fish1, @fish2, @fish3, @fish4]
+
+    @river.add_fish_to_river(@fish)
 
   end
 
@@ -21,5 +34,16 @@ class BearTest < MiniTest::Test
   def test_bear_roars()
     assert_equal("ROAR!", @bear.roar())
   end
+
+  def test_takes_fish_from_river()
+    @bear.take_fish_from_river(@river)
+    assert_equal(3, @river.fish_count())
+  end
+
+  # def test_food_count()
+  #
+  # end
+
+
 
 end
