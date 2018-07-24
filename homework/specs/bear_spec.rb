@@ -1,8 +1,8 @@
 require("minitest/autorun")
 require("minitest/rg")
-require_relative("../fish")
+require_relative("../bear")
 
-class FishTest < MiniTest::Test
+class BearTest < MiniTest::Test
 
   def setup()
 
