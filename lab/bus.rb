@@ -27,13 +27,12 @@ class Bus
   end
 
   def pick_up_from_stop(stop)
-    person = stop.get_passenger()
-    pick_up(person)
+
     for person in stop.queue()
       pick_up(person)
     end
 
-    stop.clear()
+    stop.clear_queue()
   end
 
 

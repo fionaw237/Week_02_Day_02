@@ -13,10 +13,6 @@ class BusStop
     @queue << person
   end
 
-  def get_passenger()
-    return @queue.unshift()
-  end
-
   def queue()
     copy = []
     copy.replace(@queue)
