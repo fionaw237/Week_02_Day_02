@@ -5,6 +5,7 @@ class River
   def initialize(name)
     @name = name
     @fish = []
+    #could alternatively pass fish in as a property (so you start with a river containing fish) and then remove add_fish_to_river method.
   end
 
   def fish_count()
@@ -16,7 +17,7 @@ class River
   end
 
   def remove_a_fish()
-    @fish.pop()
+    return @fish.pop()
   end
 
 end
